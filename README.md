@@ -1,6 +1,7 @@
-
-[Documentación](https://www.notion.so/Criptomonedas-2145592c6f7e8009a454f1be79910392?source=copy_link)
-![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
+<div align="center">
+<a href="https://www.notion.so/Criptomonedas-2145592c6f7e8009a454f1be79910392?source=copy_link"><img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white" alt="Notion"></a>
+⬅️ Pincha para ver la documentación
+</div>
 
 # Crypto Vue
 
