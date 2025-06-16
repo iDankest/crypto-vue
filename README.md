@@ -1,5 +1,6 @@
-# Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Documentación Notion](https://www.notion.so/Criptomonedas-2145592c6f7e8009a454f1be79910392?source=copy_link)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+# Crypto Vue
+
+<p align="center">Crypto Vue es una aplicación que permite cotizar criptomonedas en tiempo real. Con llamadas a la API de CryptoCompare.</p>
