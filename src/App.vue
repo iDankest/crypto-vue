@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 
   const monedas = ref([
       { codigo: 'USD', texto: 'Dolar de Estados Unidos'},
@@ -8,6 +8,10 @@ import { ref, onMounted } from 'vue';
       { codigo: 'GBP', texto: 'Libra Esterlina'},
   ])
   const criptomonedas = ref([])
+  const cotizar = reactive({
+    moneda:'',
+    criptomoneda:''
+  })
   onMounted(() => {
     fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD')
     .then(respuesta => respuesta.json())
@@ -24,7 +28,7 @@ import { ref, onMounted } from 'vue';
       <form class="formulario">
         <div class="campo">
           <label for="moneda">Moneda:</label>
-          <select id="moneda">
+          <select id="moneda" v-model="cotizar.moneda">
             <option value="">-- Selecciona una moneda --</option>
             <option 
             v-for="moneda in monedas" :key="moneda.codigo"
@@ -33,7 +37,7 @@ import { ref, onMounted } from 'vue';
         </div>
         <div class="campo">
           <label for="cripto">Criptomoneda:</label>
-          <select id="cripto">
+          <select id="cripto" v-model="cotizar.criptomoneda">
             <option value="">-- Selecciona una criptomoneda --</option>
             <option 
             v-for="criptomoneda in criptomonedas" 
@@ -41,6 +45,7 @@ import { ref, onMounted } from 'vue';
             :key="criptomoneda.CoinInfo.Name">{{ criptomoneda.CoinInfo.FullName }}</option>
           </select>
         </div>
+        <input type="submit" value="Cotizar">
       </form>
     </div>
   </div>
