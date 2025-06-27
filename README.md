@@ -8,3 +8,8 @@
 # Crypto Vue
 
 <p align="left">Crypto Vue es una aplicación que permite cotizar criptomonedas en tiempo real. Con llamadas a la API de CryptoCompare.</p>
+
+<p align="left">Para ejecutar la aplicación, debes tener instalado Node.js y npm.</p>
+
+<p align="left">Este proyecto es para manejar APIs extrernas para manejar datos con vue.</p>
+
