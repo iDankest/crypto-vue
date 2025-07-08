@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150" alt="Logo de Crypto Vue (Opcional, si tienes uno)">
+  <img src="https://github.com/user-attachments/assets/a217a45d-d3ef-43ba-9e7e-a3dfeaa5b3bb">
   <h1>Crypto Vue</h1>
   <p>Una aplicación moderna para cotizar criptomonedas en tiempo real.</p>
 
