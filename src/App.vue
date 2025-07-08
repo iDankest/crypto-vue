@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, computed } from 'vue';
 import Alerta from './components/Alerta.vue';
 
   const monedas = ref([
@@ -33,15 +33,23 @@ import Alerta from './components/Alerta.vue';
     obtenerCotizacion()
   }
 
+  const cotizacion = ref({})
+
   const obtenerCotizacion = async () => {
     const { moneda, criptomoneda } = cotizar
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
     
     const respuesta = await fetch(url)
-    const data = await respuesta.json()
-    console.log(data.DISPLAY[criptomoneda][moneda]) //<- aqui obtenemos la cotizacion
-    
+    const data = await respuesta.json() 
+    cotizacion.value = data.DISPLAY[criptomoneda][moneda]//<- aqui obtenemos la cotizacion
   }
+
+  const mostrarResultado = computed(() => {
+    if (Object.keys(cotizacion.value).length) {
+      return true
+    }
+    return false
+  })
 </script>
 
 <template>
@@ -74,6 +82,21 @@ import Alerta from './components/Alerta.vue';
         </div>
         <input type="submit" value="Cotizar">
       </form>
+      <div class="contenedor-resultado" v-if="mostrarResultado">
+        <h2>Cotizacion</h2>
+        <div class="resultado">
+          <img 
+          :src="'https://www.cryptocompare.com' + cotizacion.IMAGEURL" 
+          alt="imagen criptomoneda">
+          <div>
+            <p>El precio es: <span>{{ cotizacion.PRICE }}</span></p>
+            <p>Precio mas alto 24h: <span>{{ cotizacion.HIGHDAY }}</span></p>
+            <p>Precio mas bajo 24h: <span>{{ cotizacion.LOWDAY }}</span></p>
+            <p>Cambio en las ultimas 24h: <span>{{ cotizacion.CHANGEPCT24HOUR }}%</span></p>
+            <p>Ultima actualizacion: <span>{{ cotizacion.LASTUPDATE }}</span></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
