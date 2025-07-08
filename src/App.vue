@@ -36,6 +36,11 @@ import Alerta from './components/Alerta.vue';
   const obtenerCotizacion = async () => {
     const { moneda, criptomoneda } = cotizar
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
+    
+    const respuesta = await fetch(url)
+    const data = await respuesta.json()
+    console.log(data.DISPLAY[criptomoneda][moneda]) //<- aqui obtenemos la cotizacion
+    
   }
 </script>
 
