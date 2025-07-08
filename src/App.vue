@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue';
 import Alerta from './components/Alerta.vue';
+import Spinner from './components/Spinner.vue';
 
   const monedas = ref([
       { codigo: 'USD', texto: 'Dolar de Estados Unidos'},
@@ -82,6 +83,7 @@ import Alerta from './components/Alerta.vue';
         </div>
         <input type="submit" value="Cotizar">
       </form>
+      <Spinner />
       <div class="contenedor-resultado" v-if="mostrarResultado">
         <h2>Cotizacion</h2>
         <div class="resultado">
