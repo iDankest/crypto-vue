@@ -35,14 +35,22 @@ import Spinner from './components/Spinner.vue';
   }
 
   const cotizacion = ref({})
+  const cargando = ref(false)
 
   const obtenerCotizacion = async () => {
+    cargando.value = true
+    cotizacion.value = {}
+    try{
     const { moneda, criptomoneda } = cotizar
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
-    
     const respuesta = await fetch(url)
     const data = await respuesta.json() 
     cotizacion.value = data.DISPLAY[criptomoneda][moneda]//<- aqui obtenemos la cotizacion
+    }catch(error){
+      console.log(error)
+    }finally{
+      cargando.value = false
+    }
   }
 
   const mostrarResultado = computed(() => {
@@ -83,7 +91,9 @@ import Spinner from './components/Spinner.vue';
         </div>
         <input type="submit" value="Cotizar">
       </form>
-      <Spinner />
+      <Spinner 
+      v-if="cargando"
+      />
       <div class="contenedor-resultado" v-if="mostrarResultado">
         <h2>Cotizacion</h2>
         <div class="resultado">
